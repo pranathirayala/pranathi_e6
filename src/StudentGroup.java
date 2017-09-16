@@ -177,7 +177,7 @@ public StudentGroup(){}
         Student temp;
         for (int i = 0; i < n; i++) {
             for (int j = i + 1; j < n; j++) {
-                if (students[j - 1].id > students[j].id) {
+                if (students[j - 1].getId() > students[j].getId()) {
                     temp = students[j - 1];
                     students[j - 1] = students[j];
                     students[j] = temp;
@@ -209,20 +209,20 @@ public StudentGroup(){}
         Student[] st1=new Student[students.length];
 	int j=0;
  int dy,dm,dd;
-int fy= firstDate.get(Calendar.YEAR);
- int fm = firstDate.get(Calendar.MONTH);
-int fd = firstDate.get(Calendar.DAY_OF_MONTH);
-int ly= lastDate.get(Calendar.YEAR);
- int lm = lastDate.get(Calendar.MONTH);
-int ld = lastDate.get(Calendar.DAY_OF_MONTH);
+int fy= firstDate.getYear();
+ int fm = firstDate.getMonth();
+int fd = firstDate.getDate();
+int ly= lastDate.getYear();
+ int lm = lastDate.getMonth();
+int ld = lastDate.getDate();
 
         if (firstDate == null || lastDate == null)
             throw new IllegalArgumentException();
         else {
             for (int i = 0; i < noOfStudents; i++) {
- dy = students[i].getBirthDate().get(Calendar.YEAR);
-   dm = students[i].getBirthDate().get(Calendar.MONTH);
- dd = students[i].getBirthDate().get(Calendar.DAY_OF_MONTH);
+ dy = students[i].getBirthDate().getYear();
+   dm = students[i].getBirthDate().getMonth();
+ dd = students[i].getBirthDate().getDate();
                 if (((dy>fy )&& (dy<ly)) ||((dm>fm) && (dm<lm)) && ((dd>dm)&&(dd<ld)))
                 st1[j]=students[i];
 j++;
@@ -260,15 +260,15 @@ j++;
         else {
             Calendar t = Calendar.getInstance();
             int cy = t.get(Calendar.YEAR);
-            int dy = students[indexOfStudent].getBirthDate().get(Calendar.YEAR);
+            int dy = students[indexOfStudent].getBirthDate().getYear();
             age = cy - dy;
             int cm = t.get(Calendar.MONTH);
-            int dm = students[indexOfStudent].getBirthDate().get(Calendar.MONTH);
+            int dm = students[indexOfStudent].getBirthDate().getMonth();
             if (dm > cm)
                 age--;
             else if (dm == cm) {
                 int cd = t.get(Calendar.DAY_OF_MONTH);
-                int dd = students[indexOfStudent].getBirthDate().get(Calendar.DAY_OF_MONTH);
+                int dd = students[indexOfStudent].getBirthDate().getDate();
                 if (dd > cd)
                     age--;
             }
@@ -280,12 +280,12 @@ j++;
     public Student[] getStudentsByAge(int age) {
         // Add your implementation here
         Student[] st;
-        int j=0;
+int j=0;
         for (int i = 0; i < students.length; i++) {
             int reqage = getCurrentAgeByDate(i);
             if (reqage == age)
                 st[j]=students[i];
-                j++;
+j++;
             return st;
         }
     }
@@ -295,7 +295,7 @@ j++;
         // Add your implementation here
         Student[] temp = new Student[students.length];
         Student[] st;
-        int j=0;
+int j=0;
         for (int i = 0; i < temp.length; i++) {
             int index = i;
             for (int j = i + 1; j < temp.length; j++) {
@@ -309,7 +309,7 @@ j++;
         }
         for (int i = 0; i < temp.length; i++) {
             if ((temp[temp.length - 1]).getAvgMark() == temp[i].getAvgMark())
-                s[j]=temp[i];
+                st[j]=temp[i];
 j++;
         }
         return st;
@@ -322,15 +322,19 @@ j++;
         Student[] st8;
         if (student == null)
             throw new IllegalArgumentException();
-        else {
-            for (int i = 0; i < students.length; i++) {
-                if (students[i].getId() == student.getId()) {
+        else 
+        {
+            for (int i = 0; i < students.length; i++)
+            {
+                if (students[i].getId() == student.getId())
+                {
                     st8 = students[i + 1];
-                   
+                    
                 }
             }
- return st8;
+return st8;
         }
+		
 
     }
 }
