@@ -138,7 +138,6 @@ public class StudentGroup implements StudentArrayOperation {
     @Override
     public void removeFromElement(Student student) {
         // Add your implementation here
-        int pos = 0;
         if (student == null)
             throw new IllegalArgumentException();
         for (int i = 0; i < noOfStudents; i++) {
@@ -162,7 +161,6 @@ public class StudentGroup implements StudentArrayOperation {
     @Override
     public void removeToElement(Student student) {
         // Add your implementation here
-        int pos = 0;
         if (student == null)
             throw new IllegalArgumentException();
         for (int i = 0; i < noOfStudents; i++) {
@@ -180,9 +178,9 @@ public class StudentGroup implements StudentArrayOperation {
         for (int i = 0; i < n; i++) {
             for (int j = i + 1; j < n; j++) {
                 if (students[j - 1].id > students[j].id) {
-                    temp = students[j - 1].id;
-                    students[j - 1].id = students[j].id;
-                    students[j].id = temp;
+                    temp = students[j - 1];
+                    students[j - 1] = students[j];
+                    students[j] = temp;
                 }
             }
         }

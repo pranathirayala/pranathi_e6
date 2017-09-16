@@ -7,11 +7,12 @@ public class Main {
 		//compilation problems before to submit
 	Student[] s=new Student[2];
 	s[0].setId(1);
-	s[0].setFullName("rrrr gg");
+	s[0].setFullName("rrrr");
 	s[0].setBirthDate(1992-09-13);
 	s[0].setAvgMark(99);
+int n=s[0].getId();
 	s[1].setId(2);
-	s[1].setFullName("aaar ggg");
+	s[1].setFullName("aaar");
 	s[1].setBirthDate(1992-09-14);
 	s[1].setAvgMark(96);
 
