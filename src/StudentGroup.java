@@ -280,10 +280,12 @@ j++;
     public Student[] getStudentsByAge(int age) {
         // Add your implementation here
         Student[] st;
+        int j=0;
         for (int i = 0; i < students.length; i++) {
             int reqage = getCurrentAgeByDate(i);
             if (reqage == age)
-                st.add(students[i]);
+                st[j]=students[i];
+                j++;
             return st;
         }
     }
@@ -293,6 +295,7 @@ j++;
         // Add your implementation here
         Student[] temp = new Student[students.length];
         Student[] st;
+        int j=0;
         for (int i = 0; i < temp.length; i++) {
             int index = i;
             for (int j = i + 1; j < temp.length; j++) {
@@ -306,7 +309,8 @@ j++;
         }
         for (int i = 0; i < temp.length; i++) {
             if ((temp[temp.length - 1]).getAvgMark() == temp[i].getAvgMark())
-                st.add(temp[i]);
+                s[j]=temp[i];
+j++;
         }
         return st;
 
@@ -321,11 +325,11 @@ j++;
         else {
             for (int i = 0; i < students.length; i++) {
                 if (students[i].getId() == student.getId()) {
-                    student = students[i + 1];
-                    return student;
+                    st8 = students[i + 1];
+                   
                 }
             }
-
+ return st8;
         }
 
     }
