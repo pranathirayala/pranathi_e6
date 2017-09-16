@@ -17,7 +17,7 @@ public class StudentGroup implements StudentArrayOperation {
 
     private Student[] students;
     private static int noOfStudents = 0;
-
+public StudentGroup(){}
     /**
      * DO NOT remove or change this constructor, it will be used during task check
      *
@@ -206,13 +206,26 @@ public class StudentGroup implements StudentArrayOperation {
     @Override
     public Student[] getBetweenBirthDates(Date firstDate, Date lastDate) {
         // Add your implementation here
-        Student[] st1;
+        Student[] st1=new Student[students.length];
+	int j=0;
+ int dy,dm,dd;
+int fy= firstDate.get(Calendar.YEAR);
+ int fm = firstDate.get(Calendar.MONTH);
+int fd = firstDate.get(Calendar.DAY_OF_MONTH);
+int ly= lastDate.get(Calendar.YEAR);
+ int lm = lastDate.get(Calendar.MONTH);
+int ld = lastDate.get(Calendar.DAY_OF_MONTH);
+
         if (firstDate == null || lastDate == null)
             throw new IllegalArgumentException();
         else {
-            for (int i = 0; i < students.length; i++) {
-                if (((students[i].getBirthDate()) >= firstDate) ||((students[i].getBirthDate()) <= lastDate))
-                st1.set(students[i]);
+            for (int i = 0; i < noOfStudents; i++) {
+ dy = students[i].getBirthDate().get(Calendar.YEAR);
+   dm = students[i].getBirthDate().get(Calendar.MONTH);
+ dd = students[i].getBirthDate().get(Calendar.DAY_OF_MONTH);
+                if (((dy>fy )&& (dy<ly)) ||((dm>fm) && (dm<lm)) && ((dd>dm)&&(dd<ld)))
+                st1[j]=students[i];
+j++;
             }
         }
         return st1;
@@ -223,12 +236,14 @@ public class StudentGroup implements StudentArrayOperation {
     public Student[] getNearBirthDate(Date date, int days) {
         // Add your implementation here
         Student[] st2 = new Student[students.length];
+int j=0;
         if (date.equals(null))
             throw new IllegalArgumentException();
         else {
-            for (int i = 0; i < students.length; i++) {
+            for (int i = 0; i < noOfStudents; i++) {
                 if(((students[i].getBirthDate()).equals(date)) || ((students[i].getBirthDate()).equals(date.getDay() + days)))
-                    st2.add(students[i]);
+                    st2[j]=students[i];
+j++;
             }
 
         }
@@ -239,7 +254,7 @@ public class StudentGroup implements StudentArrayOperation {
     @Override
     public int getCurrentAgeByDate(int indexOfStudent) {
         // Add your implementation here
-        int age;
+        int age=0;
         if (indexOfStudent == 0)
             throw new IllegalArgumentException();
         else {
